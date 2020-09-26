@@ -54,6 +54,12 @@ const weekSchema = new schema(
       required: true,
     },
     videos: [videoSchema],
+    theory: [
+      {
+        title: String,
+        description: String,
+      },
+    ],
     quiz: [
       {
         type: mongoose.Schema.Types.ObjectId,

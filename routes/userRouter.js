@@ -26,18 +26,14 @@ userRouter
 //Signup
 userRouter.post('/signup', (req, res, next) => {
   User.register(
-    new User({ username: req.body.username }),
+    new User({ username: req.body.username, type: req.body.type }),
     req.body.password,
     async (err, user) => {
       if (err) {
         res.statusCode = 500;
         res.setHeader('Content-Type', 'application/json');
-        res.json({ err: err });
+        res.json({ error: err });
       } else {
-        if (req.body.name) {
-          user.details.name = req.body.name;
-        }
-        //Add other properties here if needed
         try {
           const resp = await user.save();
           authenticate.verifyUserDB(req, res, () => {

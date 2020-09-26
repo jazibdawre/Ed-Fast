@@ -4,10 +4,6 @@ const Courses = require('../models/courses');
 var authenticate = require('../authenticate');
 
 var courseRouter = express.Router();
-// var quizRouter = express.Router({ mergeParams: true });
-
-// // Handling quizzes
-// courseRouter.use('/:courseId/quiz', quizRouter);
 
 courseRouter
   .route('/')

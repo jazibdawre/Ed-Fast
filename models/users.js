@@ -8,7 +8,6 @@ const userSchema = new schema(
     type: {
       //Set as 'Student' or 'Professor'
       type: String,
-      required: true,
     },
     details: {
       type: mongoose.Types.ObjectId,

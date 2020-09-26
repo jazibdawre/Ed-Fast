@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 // reactstrap components
 import {
@@ -16,7 +18,49 @@ import {
 } from 'reactstrap';
 
 class User extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: '',
+      contacts: '',
+      email: '',
+      institute: '',
+      gradyear: '',
+      redirect: null,
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({ [nam]: val });
+  };
+
+  handleSubmit() {
+    //send req to server
+    axios
+      .post(`http://localhost:3001/students`, this.state)
+      .then((res) => {
+        axios
+          .put(`http://localhost:3001/users`, { details: res._id })
+          .then((res) => {
+            this.setState({ redirect: '/admin/dashboard' });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
     return (
       <>
         <div className="content">
@@ -34,9 +78,11 @@ class User extends React.Component {
                         <FormGroup>
                           <label>First Name</label>
                           <Input
+                            name="name"
                             defaultValue=""
                             placeholder="First Name"
                             type="text"
+                            onChange={this.handleChange}
                           />
                         </FormGroup>
                       </Col>
@@ -44,9 +90,11 @@ class User extends React.Component {
                         <FormGroup>
                           <label>Last Name</label>
                           <Input
+                            name="lname"
                             defaultValue=""
                             placeholder="Last Name"
                             type="text"
+                            onChange={this.handleChange}
                           />
                         </FormGroup>
                       </Col>
@@ -56,9 +104,11 @@ class User extends React.Component {
                         <FormGroup>
                           <label>Address</label>
                           <Input
+                            name="address"
                             defaultValue=""
                             placeholder="Address"
                             type="text"
+                            onChange={this.handleChange}
                           />
                         </FormGroup>
                       </Col>
@@ -67,14 +117,24 @@ class User extends React.Component {
                       <Col className="pr-1" md="5">
                         <FormGroup>
                           <label>Contact Number</label>
-                          <Input placeholder="contact no" type="number" />
+                          <Input
+                            placeholder="contact no"
+                            type="number"
+                            name="contact"
+                            onChange={this.handleChange}
+                          />
                         </FormGroup>
                       </Col>
 
                       <Col className="pl-1" md="7">
                         <FormGroup>
                           <label htmlFor="email">Email address</label>
-                          <Input placeholder="Email" type="email" />
+                          <Input
+                            placeholder="Email"
+                            type="email"
+                            name="email"
+                            onChange={this.handleChange}
+                          />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -87,13 +147,20 @@ class User extends React.Component {
                             defaultValue=""
                             placeholder="Institute"
                             type="text"
+                            name="institution"
+                            onChange={this.handleChange}
                           />
                         </FormGroup>
                       </Col>
                       <Col className="pl-1" md="3">
                         <FormGroup>
                           <label>Graduation year</label>
-                          <Input placeholder="gradyear" type="number" />
+                          <Input
+                            placeholder="gradyear"
+                            type="number"
+                            name="gradyear"
+                            onChange={this.handleChange}
+                          />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -103,7 +170,7 @@ class User extends React.Component {
                         <Button
                           className="btn-round"
                           color="primary"
-                          type="submit"
+                          onClick={() => this.handleSubmit()}
                         >
                           Register
                         </Button>

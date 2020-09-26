@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 // reactstrap components
 import {
@@ -16,16 +18,56 @@ import {
 } from 'reactstrap';
 
 class User extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: '',
+      password: '',
+      redirect: null,
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleUserChange = (event) => {
+    this.setState({ username: event.target.value });
+  };
+
+  handlePassChange = (event) => {
+    this.setState({ password: event.target.value });
+  };
+
   handleSubmit(type) {
     //send req to server
-    if (type == 'student') {
-      //route to student
+    const user = {
+      username: this.state.username,
+      password: this.state.password,
+      type: type,
+    };
+
+    axios
+      .post(`http://localhost:3001/users/signup`, user)
+      .then((res) => {
+        axios.defaults.headers.common['Authorization'] =
+          'Bearer ' + res.data.token;
+        console.log(res.data.token);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    if (type == 'Student') {
+      this.setState({ redirect: '/admin/studentRegisteration' });
     } else {
-      //route to professor
+      this.setState({ redirect: '/admin/professorRegisteration' });
     }
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
     return (
       <>
         <div className="content">
@@ -46,6 +88,7 @@ class User extends React.Component {
                             defaultValue=""
                             placeholder="Enter username"
                             type="text"
+                            onChange={this.handleUserChange}
                           />
                         </FormGroup>
                       </Col>
@@ -59,6 +102,7 @@ class User extends React.Component {
                             defaultValue=""
                             placeholder="Enter password"
                             type="text"
+                            onChange={this.handlePassChange}
                           />
                         </FormGroup>
                       </Col>
@@ -69,7 +113,7 @@ class User extends React.Component {
                         <Button
                           className="btn-round"
                           color="primary"
-                          onClick={() => this.handleSubmit('student')}
+                          onClick={() => this.handleSubmit('Student')}
                         >
                           Register as student
                         </Button>
@@ -79,7 +123,7 @@ class User extends React.Component {
                         <Button
                           className="btn-round"
                           color="primary"
-                          onClick={() => this.handleSubmit('professor')}
+                          onClick={() => this.handleSubmit('Professor')}
                         >
                           Register as professor
                         </Button>

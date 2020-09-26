@@ -1,22 +1,6 @@
-/*!
-
-=========================================================
-* Paper Dashboard React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
+import React from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 // reactstrap components
 import {
@@ -31,16 +15,59 @@ import {
   Input,
   Row,
   Col,
-} from "reactstrap";
+} from 'reactstrap';
 
 class User extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: '',
+      bio: '',
+      institute: '',
+      qualification: '',
+      contacts: '',
+      email: '',
+      redirect: null,
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({ [nam]: val });
+  };
+
+  handleSubmit() {
+    //send req to server
+    axios
+      .post(`http://localhost:3001/students`, this.state)
+      .then((res) => {
+        axios
+          .put(`http://localhost:3001/users`, { details: res._id })
+          .then((res) => {
+            this.setState({ redirect: '/admin/dashboard' });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
     return (
       <>
         <div className="content">
           <Row>
-            <Col md="2">
-            </Col>
+            <Col md="2"></Col>
             <Col md="8">
               <Card className="card-user">
                 <CardHeader>
@@ -48,14 +75,16 @@ class User extends React.Component {
                 </CardHeader>
                 <CardBody>
                   <Form>
-                  <Row>
+                    <Row>
                       <Col className="pr-1" md="6">
                         <FormGroup>
                           <label>First Name</label>
                           <Input
+                            name="name"
                             defaultValue=""
                             placeholder="First Name"
                             type="text"
+                            onChange={this.handleChange}
                           />
                         </FormGroup>
                       </Col>
@@ -63,9 +92,11 @@ class User extends React.Component {
                         <FormGroup>
                           <label>Last Name</label>
                           <Input
+                            name="lname"
                             defaultValue=""
                             placeholder="Last Name"
                             type="text"
+                            onChange={this.handleChange}
                           />
                         </FormGroup>
                       </Col>
@@ -75,47 +106,63 @@ class User extends React.Component {
                         <FormGroup>
                           <label>Address</label>
                           <Input
+                            name="address"
                             defaultValue=""
                             placeholder="Address"
                             type="text"
+                            onChange={this.handleChange}
                           />
                         </FormGroup>
                       </Col>
                     </Row>
                     <Row>
                       <Col className="pr-1" md="5">
-                      <FormGroup>
+                        <FormGroup>
                           <label>Contact Number</label>
-                          <Input placeholder="contact no" type="number" />
+                          <Input
+                            name="contact"
+                            placeholder="contact no"
+                            type="number"
+                            onChange={this.handleChange}
+                          />
                         </FormGroup>
                       </Col>
-                      
+
                       <Col className="pl-1" md="7">
                         <FormGroup>
-                          <label htmlFor="email">
-                            Email address
-                          </label>
-                          <Input placeholder="Email" type="email" />
+                          <label htmlFor="email">Email address</label>
+                          <Input
+                            name="email"
+                            placeholder="Email"
+                            type="email"
+                            onChange={this.handleChange}
+                          />
                         </FormGroup>
                       </Col>
                     </Row>
-                    
+
                     <Row>
-                      
                       <Col className="p1-1" md="9">
                         <FormGroup>
                           <label>Name of institution:</label>
                           <Input
+                            name="institute"
                             defaultValue=""
                             placeholder="Institute"
                             type="text"
+                            onChange={this.handleChange}
                           />
                         </FormGroup>
                       </Col>
                       <Col className="pl-1" md="3">
                         <FormGroup>
                           <label>Qualification</label>
-                          <Input placeholder="qualification" type="number" />
+                          <Input
+                            name="qualification"
+                            placeholder="qualification"
+                            type="number"
+                            onChange={this.handleChange}
+                          />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -124,8 +171,10 @@ class User extends React.Component {
                         <FormGroup>
                           <label>Bio</label>
                           <Input
+                            name="bio"
                             type="textarea"
                             defaultValue=""
+                            onChange={this.handleChange}
                           />
                         </FormGroup>
                       </Col>
@@ -145,8 +194,7 @@ class User extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-            <Col md="2">
-            </Col>
+            <Col md="2"></Col>
           </Row>
         </div>
       </>

@@ -20,11 +20,25 @@ userRouter
         next(error);
       }
     }
-  );
+  )
+  .put(authenticate.verifyUser, async (req, res, next) => {
+    try {
+      const user = await User.findByIdAndUpdate(
+        req.user._id,
+        { $set: req.body },
+        { new: true }
+      ); //new returns the modified user data
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.json(user);
+    } catch (error) {
+      next(error);
+    }
+  });
 
 //Authentication routes
 //Signup
-userRouter.post('/signup', (req, res, next) => {
+userRouter.route('/signup').post((req, res, next) => {
   User.register(
     new User({ username: req.body.username, type: req.body.type }),
     req.body.password,

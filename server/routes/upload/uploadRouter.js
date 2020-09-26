@@ -1,8 +1,10 @@
 // import dependancies
 const express = require('express');
+const { truncateSync } = require('fs');
 const multer = require('multer');
 
-var authenticate = require('../authenticate');
+const authenticate = require('../../middleware/auth');
+const Courses = require('../../models/courses');
 const router = express.Router();
 
 // multer middleware -- (Subject to reloactaion)
@@ -38,7 +40,7 @@ const upload = multer({
 
 // port which receives the video
 router.post(
-  '/',
+  '/uploadFile',
   // only admin/proffessor can make videos
   authenticate.verifyAdmin,
   (req, res, next) => {
@@ -54,5 +56,37 @@ router.post(
     });
   }
 );
+
+// create
+router
+  .post('/video', authenticate.verifyAdmin, (req, res) => {
+    Courses.findByIdAndUpdate(
+      req.body.courseID,
+      { video: req.body.video },
+      { new: true }
+    )
+      .then(() =>
+        res.json({ success: true, msg: 'Course Updated Successfully' })
+      )
+      .catch((err) => res.json({ success: false, error: err }));
+  })
+  .get('/video/:id', authenticate.verifyUser, (req, res) => {
+    Courses.findOne(req.params.courseID)
+      .populate('video')
+      .exec()
+      .then((foundCourse) => {
+        foundCourse
+          .findOne(req.params.id)
+          .then((foundVideo) => {
+            res.json({ success: true, msg: 'Video Found!', foundVideo });
+          })
+          .catch((error) =>
+            res.json({ success: false, msg: 'Video Not Found' })
+          );
+      })
+      .catch((err) => {
+        res.json({ success: false, error: err });
+      });
+  });
 
 module.exports = router;

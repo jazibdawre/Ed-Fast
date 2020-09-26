@@ -1,7 +1,7 @@
 var express = require('express');
 const Courses = require('../models/courses');
 
-var authenticate = require('../authenticate');
+var authenticate = require('../middleware/auth');
 
 var courseRouter = express.Router();
 

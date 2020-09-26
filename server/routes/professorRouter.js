@@ -1,7 +1,7 @@
 var express = require('express');
 const Professors = require('../models/professors');
 
-var authenticate = require('../authenticate');
+var authenticate = require('../middleware/auth');
 
 var professorRouter = express.Router();
 

@@ -1,7 +1,7 @@
 var express = require('express');
 var passport = require('passport');
 var User = require('../models/users');
-var authenticate = require('../authenticate');
+var authenticate = require('../middleware/auth');
 
 var userRouter = express.Router();
 

@@ -9,7 +9,7 @@ professorRouter
   .route('/')
   .get(authenticate.verifyUser, async (req, res, next) => {
     try {
-      const professors = await Professors.find({}).populate('projects');
+      const professors = await Professors.find({}).populate('courses');
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');
       res.json(professors);
@@ -42,7 +42,7 @@ professorRouter
     try {
       const professor = await Professors.findById(
         req.params.professorId
-      ).populate('projects');
+      ).populate('courses');
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');
       res.json(professor);

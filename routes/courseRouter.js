@@ -43,7 +43,7 @@ courseRouter
   .get(authenticate.verifyUser, async (req, res, next) => {
     try {
       const course = await Courses.findById(req.params.courseId).populate(
-        'customer employees'
+        'students professors reviews.author'
       );
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');

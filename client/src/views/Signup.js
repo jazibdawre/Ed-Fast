@@ -1,22 +1,4 @@
-/*!
-
-=========================================================
-* Paper Dashboard React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
+import React from 'react';
 
 // reactstrap components
 import {
@@ -31,16 +13,24 @@ import {
   Input,
   Row,
   Col,
-} from "reactstrap";
+} from 'reactstrap';
 
 class User extends React.Component {
+  handleSubmit(type) {
+    //send req to server
+    if (type == 'student') {
+      //route to student
+    } else {
+      //route to professor
+    }
+  }
+
   render() {
     return (
       <>
         <div className="content">
           <Row>
-            <Col md="3">
-            </Col>
+            <Col md="3"></Col>
             <Col md="5">
               <Card className="card-user">
                 <CardHeader>
@@ -60,7 +50,7 @@ class User extends React.Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    
+
                     <Row>
                       <Col md="12">
                         <FormGroup>
@@ -73,24 +63,23 @@ class User extends React.Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    
-                    
+
                     <Row>
                       <div className="update ml-auto mr-auto">
                         <Button
                           className="btn-round"
                           color="primary"
-                          type="submit"
+                          onClick={() => this.handleSubmit('student')}
                         >
                           Register as student
                         </Button>
                       </div>
-                    
+
                       <div className="update ml-auto mr-auto">
                         <Button
                           className="btn-round"
                           color="primary"
-                          type="submit"
+                          onClick={() => this.handleSubmit('professor')}
                         >
                           Register as professor
                         </Button>
@@ -100,8 +89,7 @@ class User extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-            <Col md="4">
-            </Col>
+            <Col md="4"></Col>
           </Row>
         </div>
       </>

@@ -89,7 +89,7 @@ courseRouter
     }
   );
 
-//Week specific stuff
+//[!] Week specific stuff
 courseRouter
   .route('/:courseId/week')
   .get((req, res, next) => {
@@ -155,7 +155,6 @@ courseRouter
       .catch((err) => next(err));
   })
   .delete(
-    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res, next) => {

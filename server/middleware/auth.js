@@ -1,5 +1,5 @@
 var passport = require('passport');
-var config = require('./config/authentication');
+var config = require('../config/authentication');
 var LocalStrategy = require('passport-local').Strategy;
 var Extractjwt = require('passport-jwt').ExtractJwt;
 var JwtStrategy = require('passport-jwt').Strategy;

@@ -1,6 +1,6 @@
 import Course from 'views/Course.js';
 import StudentRegisteration from 'views/StudentRegisteration.js';
-import Icons from 'views/Icons.js';
+import Content from 'views/Content.js';
 import Typography from 'views/Typography.js';
 import TableList from 'views/Tables.js';
 import Signup from 'views/Signup.js';
@@ -28,8 +28,8 @@ var routes = [
   {
     path: '/content',
     name: 'Video',
-    icon: 'nc-icon nc-diamond',
-    component: Icons,
+    icon: 'nc-icon nc-button-play',
+    component: Content,
     layout: '/admin',
     hidden: false,
   },
@@ -68,7 +68,7 @@ var routes = [
   {
     path: '/quiz',
     name: 'Quiz',
-    icon: 'nc-icon nc-tile-56',
+    icon: 'nc-icon nc-single-copy-04',
     component: TableList,
     layout: '/admin',
     hidden: false,
@@ -79,7 +79,7 @@ var routes = [
     icon: 'nc-icon nc-caps-small',
     component: Typography,
     layout: '/admin',
-    hidden: false,
+    hidden: true,
   },
 ];
 export default routes;

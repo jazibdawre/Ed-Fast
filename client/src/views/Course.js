@@ -46,9 +46,7 @@ class Dashboard extends React.Component {
                         </a>
                       </div>
                       <p>
-                        <h5>
-                          dgsdvfuyagfbiaqefhiuqebgiu ubfqpeibfpeuqfbqpuf9pq fb
-                        </h5>
+                        <h5>Course details here</h5>
                       </p>
                     </CardBody>
                   </Card>

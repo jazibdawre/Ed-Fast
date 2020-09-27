@@ -41,7 +41,7 @@ class Icons extends React.Component {
                 <CardHeader>
                   <Row>
                     <Col md="9">
-                      <CardTitle tag="h2">Video/Content topic</CardTitle>
+                      <CardTitle tag="h2">Maths</CardTitle>
                     </Col>
                     <Col md="3">
                       <div className="update ml-auto mr-auto">

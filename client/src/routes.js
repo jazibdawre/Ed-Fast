@@ -5,6 +5,7 @@ import Typography from 'views/Typography.js';
 import TableList from 'views/Tables.js';
 import Signup from 'views/Signup.js';
 import Login from 'views/Login.js';
+import detailedVideo from 'views/detailedVideo.js';
 import ProfessorRegisteration from 'views/ProfessorRegisteration.js';
 import Home from 'views/Home.js';
 
@@ -74,8 +75,16 @@ var routes = [
     hidden: false,
   },
   {
-    path: '/typography',
-    name: 'Typography',
+    path: '/videodetail',
+    name: 'Video Detail',
+    icon: 'nc-icon nc-button-play',
+    component: detailedVideo,
+    layout: '/admin',
+    hidden: false,
+  },
+  {
+    path: '/hello',
+    name: 'hello',
     icon: 'nc-icon nc-caps-small',
     component: Typography,
     layout: '/admin',

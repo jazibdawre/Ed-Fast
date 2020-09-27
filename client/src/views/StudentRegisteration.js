@@ -52,7 +52,7 @@ class User extends React.Component {
         axios
           .put(`http://localhost:3001/users`, user)
           .then((res) => {
-            this.setState({ redirect: '/admin/dashboard' });
+            this.setState({ redirect: '/admin/home' });
           })
           .catch((err) => {
             console.log(err);

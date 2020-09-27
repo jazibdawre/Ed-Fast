@@ -135,7 +135,7 @@ class Header extends React.Component {
             <Nav navbar>
               <NavItem>
                 <div className="update ml-2">
-                  <a href="/admin/signup" onClick={(e) => e.preventDefault()}>
+                  <a href="/admin/signup">
                     <Button className="btn-round" color="primary" type="submit">
                       Sign up
                     </Button>
@@ -144,7 +144,7 @@ class Header extends React.Component {
               </NavItem>
               <NavItem>
                 <div className="update ml-2">
-                  <a href="/admin/login" onClick={(e) => e.preventDefault()}>
+                  <a href="/admin/login">
                     <Button className="btn-round" color="primary" type="submit">
                       sign in
                     </Button>
@@ -153,7 +153,12 @@ class Header extends React.Component {
               </NavItem>
               <NavItem>
                 <div className="update ml-2">
-                  <a href="#" onClick={(e) => e.preventDefault()}>
+                  <a
+                    href="/"
+                    onClick={(e) => {
+                      return;
+                    }}
+                  >
                     <Button className="btn-round" color="primary" type="submit">
                       logout
                     </Button>

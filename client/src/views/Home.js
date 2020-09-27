@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 // reactstrap components
 import {
@@ -77,13 +78,11 @@ class Upgrade extends React.Component {
                                   <h6>The basics</h6>
                                 </CardBody>
                                 <CardFooter>
-                                  <Button
-                                    block
-                                    color="primary"
-                                    onClick={() => this.notify('tc')}
-                                  >
-                                    Enroll !
-                                  </Button>
+                                  <a href="/admin/course">
+                                    <Button block color="primary">
+                                      Enroll !
+                                    </Button>
+                                  </a>
                                 </CardFooter>
                               </Card>
                             </Col>
@@ -509,9 +508,7 @@ class Upgrade extends React.Component {
                     </Col>
                   </Row>
                 </CardBody>
-                <CardFooter>
-                Team byteForce, CODEIT20
-                </CardFooter>
+                <CardFooter>Team byteForce, CODEIT20</CardFooter>
               </Card>
             </Col>
           </Row>

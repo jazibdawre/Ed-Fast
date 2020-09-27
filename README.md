@@ -16,7 +16,7 @@ An e-Learning Website with content / video sharing
 ├── app.js                  -> Sets up express app with routers, middlewares etc and exports it
 ├── index.js                -> Connects to DB and starts the server, file to be run for starting the app
 └── package.json            -> Npm package.json file
-
+```
 
 #### Backend
 

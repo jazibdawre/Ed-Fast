@@ -3,8 +3,8 @@ const express = require('express');
 const { truncateSync } = require('fs');
 const multer = require('multer');
 
-const authenticate = require('../../middleware/auth');
-const Courses = require('../../models/courses');
+const authenticate = require('../middleware/auth');
+const Courses = require('../models/courses');
 const router = express.Router();
 
 // multer middleware -- (Subject to reloactaion)
@@ -13,7 +13,7 @@ const router = express.Router();
 const storage = multer.diskStorage({
   // specifying path of file where video will be saved
   destination: (req, file, cb) => {
-    cb(null, '../../uploads/');
+    cb(null, '../uploads/');
   },
   // making sure file uploaded is a .mp4 file
   fileFilter: (req, file, cb) => {
@@ -57,7 +57,7 @@ router.post(
   }
 );
 
-// create
+// Add Files details to mongoose collection
 router
   .post('/video', authenticate.verifyAdmin, (req, res) => {
     Courses.findByIdAndUpdate(
@@ -70,6 +70,8 @@ router
       )
       .catch((err) => res.json({ success: false, error: err }));
   })
+
+  // details of a particular file
   .get('/video/:id', authenticate.verifyUser, (req, res) => {
     Courses.findOne(req.params.courseID)
       .populate('video')

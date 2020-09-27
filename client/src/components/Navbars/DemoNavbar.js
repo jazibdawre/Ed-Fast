@@ -16,8 +16,8 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Collapse,
@@ -35,9 +35,9 @@ import {
   InputGroupText,
   InputGroupAddon,
   Input,
-} from "reactstrap";
+} from 'reactstrap';
 
-import routes from "routes.js";
+import routes from 'routes.js';
 
 class Header extends React.Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class Header extends React.Component {
     this.state = {
       isOpen: false,
       dropdownOpen: false,
-      color: "transparent",
+      color: 'transparent',
     };
     this.toggle = this.toggle.bind(this);
     this.dropdownToggle = this.dropdownToggle.bind(this);
@@ -54,11 +54,11 @@ class Header extends React.Component {
   toggle() {
     if (this.state.isOpen) {
       this.setState({
-        color: "transparent",
+        color: 'transparent',
       });
     } else {
       this.setState({
-        color: "dark",
+        color: 'dark',
       });
     }
     this.setState({
@@ -71,7 +71,7 @@ class Header extends React.Component {
     });
   }
   getBrand() {
-    let brandName = "Default Brand";
+    let brandName = 'Default Brand';
     routes.map((prop, key) => {
       if (window.location.href.indexOf(prop.layout + prop.path) !== -1) {
         brandName = prop.name;
@@ -81,32 +81,32 @@ class Header extends React.Component {
     return brandName;
   }
   openSidebar() {
-    document.documentElement.classList.toggle("nav-open");
-    this.sidebarToggle.current.classList.toggle("toggled");
+    document.documentElement.classList.toggle('nav-open');
+    this.sidebarToggle.current.classList.toggle('toggled');
   }
   // function that adds color dark/transparent to the navbar on resize (this is for the collapse)
   updateColor() {
     if (window.innerWidth < 993 && this.state.isOpen) {
       this.setState({
-        color: "dark",
+        color: 'dark',
       });
     } else {
       this.setState({
-        color: "transparent",
+        color: 'transparent',
       });
     }
   }
   componentDidMount() {
-    window.addEventListener("resize", this.updateColor.bind(this));
+    window.addEventListener('resize', this.updateColor.bind(this));
   }
   componentDidUpdate(e) {
     if (
       window.innerWidth < 993 &&
       e.history.location.pathname !== e.location.pathname &&
-      document.documentElement.className.indexOf("nav-open") !== -1
+      document.documentElement.className.indexOf('nav-open') !== -1
     ) {
-      document.documentElement.classList.toggle("nav-open");
-      this.sidebarToggle.current.classList.toggle("toggled");
+      document.documentElement.classList.toggle('nav-open');
+      this.sidebarToggle.current.classList.toggle('toggled');
     }
   }
   render() {
@@ -114,65 +114,51 @@ class Header extends React.Component {
       // add or remove classes depending if we are on full-screen-maps page or not
       <Navbar
         color={
-          this.props.location.pathname.indexOf("full-screen-maps") !== -1
-            ? "dark"
+          this.props.location.pathname.indexOf('full-screen-maps') !== -1
+            ? 'dark'
             : this.state.color
         }
         expand="lg"
         className={
-          this.props.location.pathname.indexOf("full-screen-maps") !== -1
-            ? "navbar-absolute fixed-top"
-            : "navbar-absolute fixed-top " +
-              (this.state.color === "transparent" ? "navbar-transparent " : "")
+          this.props.location.pathname.indexOf('full-screen-maps') !== -1
+            ? 'navbar-absolute fixed-top'
+            : 'navbar-absolute fixed-top ' +
+              (this.state.color === 'transparent' ? 'navbar-transparent ' : '')
         }
       >
         <Container fluid>
-          
-          
           <Collapse
             isOpen={this.state.isOpen}
             navbar
             className="justify-content-end"
           >
-            
             <Nav navbar>
               <NavItem>
-                
-              
-              <div className="update ml-auto mr-auto">
-                          <a href="#" onClick={(e) => e.preventDefault()}>
-                          <Button
-                            className="btn-round"
-                            color="primary"
-                            type="submit"
-                          >
-                           Sign up   
-                          </Button></a>
-                        </div>
+                <div className="update ml-2">
+                  <a href="/admin/signup" onClick={(e) => e.preventDefault()}>
+                    <Button className="btn-round" color="primary" type="submit">
+                      Sign up
+                    </Button>
+                  </a>
+                </div>
               </NavItem>
               <NavItem>
-              <div className="update ml-auto mr-auto">
-                          <a href="#" onClick={(e) => e.preventDefault()}>
-                          <Button
-                            className="btn-round"
-                            color="primary"
-                            type="submit"
-                          >
-                            sign in   
-                          </Button></a>
-                        </div>
+                <div className="update ml-2">
+                  <a href="/admin/login" onClick={(e) => e.preventDefault()}>
+                    <Button className="btn-round" color="primary" type="submit">
+                      sign in
+                    </Button>
+                  </a>
+                </div>
               </NavItem>
               <NavItem>
-              <div className="update ml-auto mr-auto">
-                          <a href="#" onClick={(e) => e.preventDefault()}>
-                          <Button
-                            className="btn-round"
-                            color="primary"
-                            type="submit"
-                          >
-                            logout   
-                          </Button></a>
-                        </div>
+                <div className="update ml-2">
+                  <a href="#" onClick={(e) => e.preventDefault()}>
+                    <Button className="btn-round" color="primary" type="submit">
+                      logout
+                    </Button>
+                  </a>
+                </div>
               </NavItem>
             </Nav>
           </Collapse>

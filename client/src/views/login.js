@@ -38,30 +38,24 @@ class User extends React.Component {
     this.setState({ password: event.target.value });
   };
 
-  handleSubmit(type) {
+  handleSubmit() {
     //send req to server
     const user = {
       username: this.state.username,
       password: this.state.password,
-      type: type,
     };
 
     axios
-      .post(`http://localhost:3001/users/signup`, user)
+      .post(`http://localhost:3001/users/login`, user)
       .then((res) => {
         axios.defaults.headers.common['Authorization'] =
           'Bearer ' + res.data.token;
-        console.log(res.data.token);
       })
       .catch((err) => {
         console.log(err);
       });
 
-    if (type == 'Student') {
-      this.setState({ redirect: '/admin/studentRegisteration' });
-    } else {
-      this.setState({ redirect: '/admin/professorRegisteration' });
-    }
+    this.setState({ redirect: '/admin/home' });
   }
 
   render() {
@@ -118,8 +112,6 @@ class User extends React.Component {
                           Login
                         </Button>
                       </div>
-
-                      
                     </Row>
                   </Form>
                 </CardBody>

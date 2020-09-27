@@ -51,7 +51,6 @@ class User extends React.Component {
       .then((res) => {
         axios.defaults.headers.common['Authorization'] =
           'Bearer ' + res.data.token;
-        console.log(res.data.token);
       })
       .catch((err) => {
         console.log(err);

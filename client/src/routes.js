@@ -4,6 +4,7 @@ import Icons from 'views/Icons.js';
 import Typography from 'views/Typography.js';
 import TableList from 'views/Tables.js';
 import Signup from 'views/Signup.js';
+import Login from 'views/Login.js';
 import ProfessorRegisteration from 'views/ProfessorRegisteration.js';
 import UpgradeToPro from 'views/Upgrade.js';
 
@@ -37,6 +38,14 @@ var routes = [
     name: 'Signups',
     icon: 'nc-icon nc-pin-3',
     component: Signup,
+    layout: '/admin',
+    hidden: true,
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    icon: 'nc-icon nc-pin-3',
+    component: Login,
     layout: '/admin',
     hidden: true,
   },

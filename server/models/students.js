@@ -38,7 +38,7 @@ const studentSchema = new schema(
     courses: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Courses',
+        ref: 'Course',
       },
     ],
   },

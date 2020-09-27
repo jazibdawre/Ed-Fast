@@ -9,7 +9,7 @@ studentRouter
   .route('/')
   .get(authenticate.verifyUser, async (req, res, next) => {
     try {
-      const students = await Students.find({}).populate('courses grades.quiz');
+      const students = await Students.find({}).populate('courses');
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');
       res.json(students);
@@ -41,7 +41,7 @@ studentRouter
   .get(authenticate.verifyUser, async (req, res, next) => {
     try {
       const student = await Students.findById(req.params.studentId).populate(
-        'courses grades.quiz'
+        'courses'
       );
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');

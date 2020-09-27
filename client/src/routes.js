@@ -9,9 +9,17 @@ import UpgradeToPro from 'views/Upgrade.js';
 
 var routes = [
   {
+    path: '/home',
+    name: 'Home',
+    icon: 'nc-icon nc-bank',
+    component: UpgradeToPro,
+    layout: '/admin',
+    hidden: false,
+  },
+  {
     path: '/course',
     name: 'Course',
-    icon: 'nc-icon nc-bank',
+    icon: 'nc-icon nc-pin-3',
     component: Dashboard,
     layout: '/admin',
     hidden: false,
@@ -49,8 +57,8 @@ var routes = [
     hidden: true,
   },
   {
-    path: '/tables',
-    name: 'Table List',
+    path: '/quiz',
+    name: 'Quiz',
     icon: 'nc-icon nc-tile-56',
     component: TableList,
     layout: '/admin',
@@ -61,15 +69,6 @@ var routes = [
     name: 'Typography',
     icon: 'nc-icon nc-caps-small',
     component: Typography,
-    layout: '/admin',
-    hidden: false,
-  },
-  {
-    pro: true,
-    path: '/upgrade',
-    name: 'Upgrade to PRO',
-    icon: 'nc-icon nc-spaceship',
-    component: UpgradeToPro,
     layout: '/admin',
     hidden: false,
   },

@@ -42,7 +42,6 @@ class User extends React.Component {
         <div className="content">
           <Row>
             <Col md="12">
-              
               <Card>
                 <CardHeader>
                   <CardTitle tag="h3">Q1. Fees bhara tumne?</CardTitle>

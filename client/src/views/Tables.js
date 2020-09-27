@@ -1,174 +1,173 @@
-/*!
+import React, { useContext, useState } from 'react';
+//import { useHistory } from 'react-router-dom';
+//import UserContext from '../../context/UserContext.js';
+//import Axios from 'axios';
+//import { Container } from '@material-ui/core';
 
-=========================================================
-* Paper Dashboard React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
-
-// reactstrap components
 import {
+  Button,
   Card,
   CardHeader,
   CardBody,
+  CardFooter,
   CardTitle,
-  Table,
+  FormGroup,
+  Form,
+  Input,
+  Label,
   Row,
   Col,
 } from "reactstrap";
 
-class Tables extends React.Component {
-  render() {
-    return (
-      <>
-        <div className="content">
-          <Row>
+export default function Tables() {
+  //const { userData, setUserData } = useContext(UserContext);
+  //const history = useHistory();
+  let listOfRequests = [];
+  let i;
+  const [responseData, setRespnseData] = useState([]);
+  const test = {questions: [
+    {
+      id: 1,
+      // question
+      questionStatement: "whats ur name?",
+      // multiple options
+      options: [
+        {
+          // what the option states
+          optionContent: "abhbfe",
+          // whether entered option is the answer or not
+        },
+        {
+          // what the option states
+          optionContent: "abhbfe",
+          // whether entered option is the answer or not
+        },
+        {
+          // what the option states
+          optionContent: "abhbfe",
+          // whether entered option is the answer or not
+        },
+        {
+          // what the option states
+          optionContent: "abhbfe",
+          // whether entered option is the answer or not
+        }
+      ],
+    },
+    {
+      id: 2,
+      // question
+      questionStatement: "whats ur address?",
+      // multiple options
+      options: [
+        {
+          // what the option states
+          optionContent: "abhbfe",
+          // whether entered option is the answer or not
+        },
+        {
+          // what the option states
+          optionContent: "abhbfe",
+          // whether entered option is the answer or not
+        },
+        {
+          // what the option states
+          optionContent: "abhbfe",
+          // whether entered option is the answer or not
+        },
+        {
+          // what the option states
+          optionContent: "abhbfe",
+          // whether entered option is the answer or not
+        }
+      ],
+    }
+  ]
+}
+
+ /* const displayRequestHandler = async (e) => {
+    e.preventDefault();
+    await Axios.get('http://localhost:5000/user/u4189492/request', {
+      headers: {
+        'x-auth-token': userData.token,
+      },
+    })
+      .then((requestRes) => {
+        setRespnseData(requestRes.data.requests);
+        console.log(listOfRequests);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };*/
+
+  return (
+    <div>
+        <div>
+            <>
+            <Row>
             <Col md="12">
               <Card>
                 <CardHeader>
-                  <CardTitle tag="h4">Simple Table</CardTitle>
+                  <CardTitle tag="h3">Quiz</CardTitle>
                 </CardHeader>
-                <CardBody>
-                  <Table responsive>
-                    <thead className="text-primary">
-                      <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th className="text-right">Salary</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Dakota Rice</td>
-                        <td>Niger</td>
-                        <td>Oud-Turnhout</td>
-                        <td className="text-right">$36,738</td>
-                      </tr>
-                      <tr>
-                        <td>Minerva Hooper</td>
-                        <td>Curaçao</td>
-                        <td>Sinaai-Waas</td>
-                        <td className="text-right">$23,789</td>
-                      </tr>
-                      <tr>
-                        <td>Sage Rodriguez</td>
-                        <td>Netherlands</td>
-                        <td>Baileux</td>
-                        <td className="text-right">$56,142</td>
-                      </tr>
-                      <tr>
-                        <td>Philip Chaney</td>
-                        <td>Korea, South</td>
-                        <td>Overland Park</td>
-                        <td className="text-right">$38,735</td>
-                      </tr>
-                      <tr>
-                        <td>Doris Greene</td>
-                        <td>Malawi</td>
-                        <td>Feldkirchen in Kärnten</td>
-                        <td className="text-right">$63,542</td>
-                      </tr>
-                      <tr>
-                        <td>Mason Porter</td>
-                        <td>Chile</td>
-                        <td>Gloucester</td>
-                        <td className="text-right">$78,615</td>
-                      </tr>
-                      <tr>
-                        <td>Jon Porter</td>
-                        <td>Portugal</td>
-                        <td>Gloucester</td>
-                        <td className="text-right">$98,615</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col md="12">
-              <Card className="card-plain">
-                <CardHeader>
-                  <CardTitle tag="h4">Table on Plain Background</CardTitle>
-                  <p className="card-category">
-                    Here is a subtitle for this table
-                  </p>
-                </CardHeader>
-                <CardBody>
-                  <Table responsive>
-                    <thead className="text-primary">
-                      <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th className="text-right">Salary</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Dakota Rice</td>
-                        <td>Niger</td>
-                        <td>Oud-Turnhout</td>
-                        <td className="text-right">$36,738</td>
-                      </tr>
-                      <tr>
-                        <td>Minerva Hooper</td>
-                        <td>Curaçao</td>
-                        <td>Sinaai-Waas</td>
-                        <td className="text-right">$23,789</td>
-                      </tr>
-                      <tr>
-                        <td>Sage Rodriguez</td>
-                        <td>Netherlands</td>
-                        <td>Baileux</td>
-                        <td className="text-right">$56,142</td>
-                      </tr>
-                      <tr>
-                        <td>Philip Chaney</td>
-                        <td>Korea, South</td>
-                        <td>Overland Park</td>
-                        <td className="text-right">$38,735</td>
-                      </tr>
-                      <tr>
-                        <td>Doris Greene</td>
-                        <td>Malawi</td>
-                        <td>Feldkirchen in Kärnten</td>
-                        <td className="text-right">$63,542</td>
-                      </tr>
-                      <tr>
-                        <td>Mason Porter</td>
-                        <td>Chile</td>
-                        <td>Gloucester</td>
-                        <td className="text-right">$78,615</td>
-                      </tr>
-                      <tr>
-                        <td>Jon Porter</td>
-                        <td>Portugal</td>
-                        <td>Gloucester</td>
-                        <td className="text-right">$98,615</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
+                </Card>
+                </Col>
+                </Row>
+              {test &&
+                test.questions.map((d) => {
+                  return (
+                    <div className='content' key={d.id}>
+                  <Row>
+                    <Col md="12">
+                    <Card>
+                     <CardBody>
+                     <Form>
+                    <Label for="Questions"><h5>Question: <b>{d.questionStatement}</b> </h5></Label>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="radio" name="answer" value="a" />{d.options[0].optionContent}
+                        </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="radio" name="answer" value="b" />{d.options[1].optionContent}
+                        </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="radio" name="answer" value="c" />{d.options[2].optionContent}
+                        </Label>
+                    </FormGroup>
+                    <FormGroup check>
+                        <Label check>
+                            <Input type="radio" name="answer" value="d" />{d.options[3].optionContent}
+                        </Label>
+                    </FormGroup>
+                </Form>
+                     </CardBody>
+                    </Card>
+                    </Col>
+                  </Row>
+                  
+                      </div>
+                      
+                  );
+                })}
+            </>
+            <Row>
+                      <div className="update ml-auto mr-auto" align="center">
+                        <Button
+                          className="btn-round"
+                          color="primary"
+                          onClick={() => this.handleSubmit('Student')}
+                        >
+                          Submit
+                        </Button>
+                      </div>
+                    </Row>
         </div>
-      </>
-    );
-  }
+      
+    </div>
+  );
 }
-
-export default Tables;

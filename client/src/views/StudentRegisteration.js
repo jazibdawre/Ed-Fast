@@ -43,10 +43,16 @@ class User extends React.Component {
     axios
       .post(`http://localhost:3001/students`, this.state)
       .then((res) => {
+        console.log(res);
+
+        const user = {
+          details: res.data._id,
+        };
+
         axios
-          .put(`http://localhost:3001/users`, { details: res._id })
+          .put(`http://localhost:3001/users`, user)
           .then((res) => {
-            this.setState({ redirect: '/admin/dashboard' });
+            this.setState({ redirect: '/admin/home' });
           })
           .catch((err) => {
             console.log(err);
@@ -147,7 +153,7 @@ class User extends React.Component {
                             defaultValue=""
                             placeholder="Institute"
                             type="text"
-                            name="institution"
+                            name="institute"
                             onChange={this.handleChange}
                           />
                         </FormGroup>

@@ -38,16 +38,15 @@ class User extends React.Component {
     this.setState({ password: event.target.value });
   };
 
-  handleSubmit(type) {
+  handleSubmit() {
     //send req to server
     const user = {
       username: this.state.username,
       password: this.state.password,
-      type: type,
     };
 
     axios
-      .post(`http://localhost:3001/users/signup`, user)
+      .post(`http://localhost:3001/users/login`, user)
       .then((res) => {
         axios.defaults.headers.common['Authorization'] =
           'Bearer ' + res.data.token;
@@ -56,11 +55,7 @@ class User extends React.Component {
         console.log(err);
       });
 
-    if (type == 'Student') {
-      this.setState({ redirect: '/admin/studentRegisteration' });
-    } else {
-      this.setState({ redirect: '/admin/professorRegisteration' });
-    }
+    this.setState({ redirect: '/admin/home' });
   }
 
   render() {
@@ -75,7 +70,7 @@ class User extends React.Component {
             <Col md="5">
               <Card className="card-user">
                 <CardHeader>
-                  <CardTitle tag="h5">Registration</CardTitle>
+                  <CardTitle tag="h5">Sign In</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Form>
@@ -108,23 +103,13 @@ class User extends React.Component {
                     </Row>
 
                     <Row>
-                      <div className="update ml-auto mr-auto">
+                      <div className="update ml-auto mr-auto" align="center">
                         <Button
                           className="btn-round"
                           color="primary"
                           onClick={() => this.handleSubmit('Student')}
                         >
-                          Register as student
-                        </Button>
-                      </div>
-
-                      <div className="update ml-auto mr-auto">
-                        <Button
-                          className="btn-round"
-                          color="primary"
-                          onClick={() => this.handleSubmit('Professor')}
-                        >
-                          Register as professor
+                          Login
                         </Button>
                       </div>
                     </Row>

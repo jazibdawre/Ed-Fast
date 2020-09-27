@@ -58,80 +58,42 @@ uploadRouter.post(
 );
 
 // Add Files details to mongoose collection
-uploadRouter
-  .post('/video', authenticate.verifyAdmin, (req, res) => {
-    Courses.findByIdAndUpdate(
-      req.body.courseID,
-      { video: req.body.video },
-      { new: true }
-    )
-      .then(() =>
-        res.json({ success: true, msg: 'Course Updated Successfully' })
-      )
-      .catch((err) => res.json({ success: false, error: err }));
-  })
+/*
+uploadRouter.post('/video', authenticate.verifyAdmin, (req, res) => {
+  Courses.findByIdAndUpdate(
+    req.body.courseID,
+    { video: req.body.video },
+    { new: true }
+  )
+    .then(() => res.json({ success: true, msg: 'Course Updated Successfully' }))
+    .catch((err) => res.json({ success: false, error: err }));
+});
+*/
 
-  // details of a particular file
-  .get('/video/:id', authenticate.verifyUser, (req, res) => {
-    /*
-    Courses.findOne(req.params.courseID)
-      .populate('video')
-      .exec()
-      .then((foundCourse) => {
-        foundCourse
-          .findOne(req.params.id)
-          .then((foundVideo) => {
-            res.json({ success: true, msg: 'Video Found!', foundVideo });
-          })
-          .catch((error) =>
-            res.json({ success: false, msg: 'Video Not Found' })
-          );
-      })
-      .catch((err) => {
-        res.json({ success: false, error: err });
-      });
-      */
-    Courses.findById(req.params.courseId)
-      .then(
-        (course) => {
-          // if course has been found and a weekID ahs been entered
-          if (course != null && course.weeks.id(req.params.weekId) != null) {
-            if (course.professors[0]._id.equals(req.user.details._id)) {
-              if (req.body.video) {
-                res.json({ success: true, video: req.body.video });
-              } else {
-                res.json({ success: false, error: 'Video Not Found' });
-              }
-              course
-                .save()
-                .then(() =>
-                  res.json({
-                    success: true,
-                    msg: 'Video Found',
-                    video: req.body.video,
-                  })
-                )
-                .catch((error) => {
-                  res.json({ success: false, error: error });
-                });
-            } else {
-              err = new Error("Cannot Edit someone Else's week");
-              err.status = 403;
-              return next(err);
-            }
-          } else if (course == null) {
-            err = new Error('Course ' + req.params.courseId + ' NOT found');
-            err.status = 404;
-            return next(err);
-          } else {
-            err = new Error('Week ' + req.params.weekId + ' NOT found');
-            err.status = 404;
-            return next(err);
+// details of a particular file
+uploadRouter.get('/video/:id', authenticate.verifyUser, (req, res) => {
+  Courses.findOne(req.params.courseID)
+    .populate('video')
+    .exec()
+    .then((foundCourse) => {
+      foundCourse
+        .findOne(req.params.id)
+        .then((foundVideo) => {
+          if (foundCourse.week.id(req.params.weekId).video.id(req.params.id)) {
+            return res.json({
+              success: true,
+              video: foundCourse.week
+                .id(req.params.weekId)
+                .video.id(req.params.id),
+            });
           }
-        },
-        (err) => next(err)
-      )
-      .catch((err) => next(err));
-  });
+          return res.json({ success: false, msg: 'Video Not Found' });
+        })
+        .catch((error) => res.json({ success: false, msg: 'Video Not Found' }));
+    })
+    .catch((err) => {
+      res.json({ success: false, error: err });
+    });
+});
 
 module.exports = uploadRouter;

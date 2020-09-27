@@ -11,10 +11,7 @@ var usersRouter = require('./routes/userRouter');
 var studentsRouter = require('./routes/studentRouter');
 var professorsRouter = require('./routes/professorRouter');
 var coursesRouter = require('./routes/courseRouter');
-<<<<<<< HEAD
-=======
 var uploadRouter = require('./routes/uploadRouter');
->>>>>>> b1f780fa6fe4ad65970497c376dd53145dfbb2a0
 
 //MongoDB
 var config = require('./config/mongodb');
@@ -55,11 +52,7 @@ app.use('/users', usersRouter);
 app.use('/students', studentsRouter);
 app.use('/professors', professorsRouter);
 app.use('/courses', coursesRouter);
-<<<<<<< HEAD
-app.use('/course/:courseID/week/:weekID', uploadRouter);
-=======
-app.use('/course/:courseID/week/weekID', uploadRouter);
->>>>>>> b1f780fa6fe4ad65970497c376dd53145dfbb2a0
+app.use('/course/:courseID/', uploadRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -222,7 +222,8 @@ courseRouter
           if (course != null && course.weeks.id(req.params.weekId) != null) {
             if (course.professors[0]._id.equals(req.user.details._id)) {
               if (req.body.video) {
-                //Add video here
+                //Add video
+                course.weeks.id(req.params.weekId).videos.push(req.body.video);
               }
               course.save().then(
                 (course) => {
@@ -293,5 +294,34 @@ courseRouter
       )
       .catch((err) => next(err));
   });
+
+courseRouter.get('/:courseId/week/:weekId/video/:videoId', (req, res) => {
+  Courses.findById(req.params.courseId)
+    .then(
+      (course) => {
+        if (course != null && course.weeks.id(req.params.weekId) != null) {
+          if (
+            !course.week.id(req.params.weekId).videos.id(req.params.videoId)
+          ) {
+            return res.join({ success: false, mesg: 'Video Not Found' });
+          }
+          const video = course.week
+            .id(req.params.weekId)
+            .videos.id(req.params.videoId);
+          return res.json({ success: true, msg: 'Video Found', video: video });
+        } else if (course == null) {
+          err = new Error('Course ' + req.params.courseId + ' NOT found');
+          err.status = 404;
+          return next(err);
+        } else {
+          err = new Error('Week ' + req.params.weekId + ' NOT found');
+          err.status = 404;
+          return next(err);
+        }
+      },
+      (err) => next(err)
+    )
+    .catch((err) => next(err));
+});
 
 module.exports = courseRouter;

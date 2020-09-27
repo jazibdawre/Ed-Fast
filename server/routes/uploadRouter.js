@@ -5,7 +5,7 @@ const multer = require('multer');
 
 const authenticate = require('../middleware/auth');
 const Courses = require('../models/courses');
-const router = express.Router();
+const uploadRouter = express.Router();
 
 // multer middleware -- (Subject to reloactaion)
 
@@ -39,7 +39,7 @@ const upload = multer({
 }).single('file');
 
 // port which receives the video
-router.post(
+uploadRouter.post(
   '/uploadFile',
   // only admin/proffessor can make videos
   authenticate.verifyAdmin,
@@ -58,37 +58,42 @@ router.post(
 );
 
 // Add Files details to mongoose collection
-router
-  .post('/video', authenticate.verifyAdmin, (req, res) => {
-    Courses.findByIdAndUpdate(
-      req.body.courseID,
-      { video: req.body.video },
-      { new: true }
-    )
-      .then(() =>
-        res.json({ success: true, msg: 'Course Updated Successfully' })
-      )
-      .catch((err) => res.json({ success: false, error: err }));
-  })
+/*
+uploadRouter.post('/video', authenticate.verifyAdmin, (req, res) => {
+  Courses.findByIdAndUpdate(
+    req.body.courseID,
+    { video: req.body.video },
+    { new: true }
+  )
+    .then(() => res.json({ success: true, msg: 'Course Updated Successfully' }))
+    .catch((err) => res.json({ success: false, error: err }));
+});
+*/
 
-  // details of a particular file
-  .get('/video/:id', authenticate.verifyUser, (req, res) => {
-    Courses.findOne(req.params.courseID)
-      .populate('video')
-      .exec()
-      .then((foundCourse) => {
-        foundCourse
-          .findOne(req.params.id)
-          .then((foundVideo) => {
-            res.json({ success: true, msg: 'Video Found!', foundVideo });
-          })
-          .catch((error) =>
-            res.json({ success: false, msg: 'Video Not Found' })
-          );
-      })
-      .catch((err) => {
-        res.json({ success: false, error: err });
-      });
-  });
+// details of a particular file
+uploadRouter.get('/video/:id', authenticate.verifyUser, (req, res) => {
+  Courses.findOne(req.params.courseID)
+    .populate('video')
+    .exec()
+    .then((foundCourse) => {
+      foundCourse
+        .findOne(req.params.id)
+        .then((foundVideo) => {
+          if (foundCourse.week.id(req.params.weekId).video.id(req.params.id)) {
+            return res.json({
+              success: true,
+              video: foundCourse.week
+                .id(req.params.weekId)
+                .video.id(req.params.id),
+            });
+          }
+          return res.json({ success: false, msg: 'Video Not Found' });
+        })
+        .catch((error) => res.json({ success: false, msg: 'Video Not Found' }));
+    })
+    .catch((err) => {
+      res.json({ success: false, error: err });
+    });
+});
 
-module.exports = router;
+module.exports = uploadRouter;

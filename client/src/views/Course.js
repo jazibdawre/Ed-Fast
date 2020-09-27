@@ -1,6 +1,4 @@
 import React from 'react';
-// react plugin used to create charts
-import { Line, Pie } from 'react-chartjs-2';
 // reactstrap components
 import {
   Button,
@@ -13,11 +11,6 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-// core components
-import {
-  dashboardEmailStatisticsChart,
-  dashboardNASDAQChart,
-} from 'variables/charts.js';
 
 class Dashboard extends React.Component {
   render() {
@@ -127,13 +120,7 @@ class Dashboard extends React.Component {
                         </td>
                       </tr>
                       <tr>
-                        <td></td>
-                      </tr>
-                      <tr>
                         <td>
-                          <h3>Quiz</h3>
-                        </td>
-                        <div className="update ml-auto mr-auto">
                           <a href="#" onClick={(e) => e.preventDefault()}>
                             <Button
                               className="btn-round"
@@ -143,7 +130,7 @@ class Dashboard extends React.Component {
                               Take Quiz
                             </Button>
                           </a>
-                        </div>
+                        </td>
                       </tr>
                     </tbody>
                   </Table>
@@ -215,13 +202,7 @@ class Dashboard extends React.Component {
                         </td>
                       </tr>
                       <tr>
-                        <td></td>
-                      </tr>
-                      <tr>
                         <td>
-                          <h3>Quiz</h3>
-                        </td>
-                        <div className="update ml-auto mr-auto">
                           <a href="#" onClick={(e) => e.preventDefault()}>
                             <Button
                               className="btn-round"
@@ -231,7 +212,7 @@ class Dashboard extends React.Component {
                               Take Quiz
                             </Button>
                           </a>
-                        </div>
+                        </td>
                       </tr>
                     </tbody>
                   </Table>
@@ -303,13 +284,7 @@ class Dashboard extends React.Component {
                         </td>
                       </tr>
                       <tr>
-                        <td></td>
-                      </tr>
-                      <tr>
                         <td>
-                          <h3>Quiz</h3>
-                        </td>
-                        <div className="update ml-auto mr-auto">
                           <a href="#" onClick={(e) => e.preventDefault()}>
                             <Button
                               className="btn-round"
@@ -319,7 +294,7 @@ class Dashboard extends React.Component {
                               Take Quiz
                             </Button>
                           </a>
-                        </div>
+                        </td>
                       </tr>
                     </tbody>
                   </Table>

@@ -1,22 +1,4 @@
-/*!
-
-=========================================================
-* Paper Dashboard React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
+import React from 'react';
 
 // reactstrap components
 import {
@@ -31,31 +13,33 @@ import {
   Table,
   Row,
   Col,
-} from "reactstrap";
+} from 'reactstrap';
 
 class Upgrade extends React.Component {
   render() {
     return (
       <>
         <div className="content">
-        <Row>
+          <Row>
             <Col md="12">
               <Card>
-                
                 <CardBody>
                   <Row>
-                  <Col md="3"></Col>
-                  <Col md="6">
-                    <h1 align="center">Welcome to FREE courses!</h1>
-                  </Col>
-                  <Col md="3"></Col>
+                    <Col md="3"></Col>
+                    <Col md="6">
+                      <h1 align="center">Welcome to FREE courses!</h1>
+                    </Col>
+                    <Col md="3"></Col>
                   </Row>
                   <Row>
-                  <Col md="2"></Col>
-                  <Col md="8">
-                    <h3 align="center">Providing free education to everyone during these tough times</h3>
-                  </Col>
-                  <Col md="2"></Col>
+                    <Col md="2"></Col>
+                    <Col md="8">
+                      <h3 align="center">
+                        Providing free education to everyone during these tough
+                        times
+                      </h3>
+                    </Col>
+                    <Col md="2"></Col>
                   </Row>
                 </CardBody>
               </Card>
@@ -72,119 +56,113 @@ class Upgrade extends React.Component {
                     <Col md="12">
                       <Card>
                         <CardHeader>
-                          <CardTitle tag="h5" className="title">Machine Learning</CardTitle>
+                          <CardTitle tag="h5" className="title">
+                            Machine Learning
+                          </CardTitle>
                         </CardHeader>
                         <CardBody>
-                        <Row>
-                          <Col md="3">
+                          <Row>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/ml.jpg")}
+                                    src={require('assets/img/ml.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 1</h5>
+                                    <h5 className="title">Course 1</h5>
                                   </div>
-                                  <h6>
-                                    The basics
-                                  </h6>
+                                  <h6>The basics</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/ml.jpg")}
+                                    src={require('assets/img/ml.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 2</h5>
+                                    <h5 className="title">Course 2</h5>
                                   </div>
-                                  <h6>
-                                    Intermediate level
-                                  </h6>
+                                  <h6>Intermediate level</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/ml.jpg")}
+                                    src={require('assets/img/ml.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 3</h5>
+                                    <h5 className="title">Course 3</h5>
                                   </div>
-                                  <h6>
-                                    Advance concepts
-                                  </h6>
+                                  <h6>Advance concepts</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/ml.jpg")}
+                                    src={require('assets/img/ml.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 4</h5>
+                                    <h5 className="title">Course 4</h5>
                                   </div>
-                                  <h6>
-                                    Become a pro!
-                                  </h6>
+                                  <h6>Become a pro!</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                        </Row>
+                            </Col>
+                          </Row>
                         </CardBody>
                       </Card>
                     </Col>
@@ -193,119 +171,113 @@ class Upgrade extends React.Component {
                     <Col md="12">
                       <Card>
                         <CardHeader>
-                          <CardTitle tag="h5" className="title">Web Development</CardTitle>
+                          <CardTitle tag="h5" className="title">
+                            Web Development
+                          </CardTitle>
                         </CardHeader>
                         <CardBody>
-                        <Row>
-                          <Col md="3">
+                          <Row>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/wd.jpg")}
+                                    src={require('assets/img/wd.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 1</h5>
+                                    <h5 className="title">Course 1</h5>
                                   </div>
-                                  <h6>
-                                    The basics
-                                  </h6>
+                                  <h6>The basics</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/wd.jpg")}
+                                    src={require('assets/img/wd.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 2</h5>
+                                    <h5 className="title">Course 2</h5>
                                   </div>
-                                  <h6>
-                                    Intermediate level
-                                  </h6>
+                                  <h6>Intermediate level</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/wd.jpg")}
+                                    src={require('assets/img/wd.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 3</h5>
+                                    <h5 className="title">Course 3</h5>
                                   </div>
-                                  <h6>
-                                    Advance concepts
-                                  </h6>
+                                  <h6>Advance concepts</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/wd.jpg")}
+                                    src={require('assets/img/wd.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 4</h5>
+                                    <h5 className="title">Course 4</h5>
                                   </div>
-                                  <h6>
-                                    Become a pro!
-                                  </h6>
+                                  <h6>Become a pro!</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                        </Row>
+                            </Col>
+                          </Row>
                         </CardBody>
                       </Card>
                     </Col>
@@ -314,119 +286,113 @@ class Upgrade extends React.Component {
                     <Col md="12">
                       <Card>
                         <CardHeader>
-                          <CardTitle tag="h5" className="title">Mobile App Development</CardTitle>
+                          <CardTitle tag="h5" className="title">
+                            Mobile App Development
+                          </CardTitle>
                         </CardHeader>
                         <CardBody>
-                        <Row>
-                          <Col md="3">
+                          <Row>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/md.jpg")}
+                                    src={require('assets/img/md.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 1</h5>
+                                    <h5 className="title">Course 1</h5>
                                   </div>
-                                  <h6>
-                                    The basics
-                                  </h6>
+                                  <h6>The basics</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/md.jpg")}
+                                    src={require('assets/img/md.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 2</h5>
+                                    <h5 className="title">Course 2</h5>
                                   </div>
-                                  <h6>
-                                    Intermediate level
-                                  </h6>
+                                  <h6>Intermediate level</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/md.jpg")}
+                                    src={require('assets/img/md.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 3</h5>
+                                    <h5 className="title">Course 3</h5>
                                   </div>
-                                  <h6>
-                                    Advance concepts
-                                  </h6>
+                                  <h6>Advance concepts</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/md.jpg")}
+                                    src={require('assets/img/md.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Course 4</h5>
+                                    <h5 className="title">Course 4</h5>
                                   </div>
-                                  <h6>
-                                    Become a pro!
-                                  </h6>
+                                  <h6>Become a pro!</h6>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                        </Row>
+                            </Col>
+                          </Row>
                         </CardBody>
                       </Card>
                     </Col>
@@ -435,113 +401,113 @@ class Upgrade extends React.Component {
                     <Col md="12">
                       <Card>
                         <CardHeader>
-                          <CardTitle tag="h5" className="title">Others:</CardTitle>
+                          <CardTitle tag="h5" className="title">
+                            Others:
+                          </CardTitle>
                         </CardHeader>
                         <CardBody>
-                        <Row>
-                          <Col md="3">
+                          <Row>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/gg.PNG")}
+                                    src={require('assets/img/gg.PNG')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Git and Github</h5>
+                                    <h5 className="title">Git and Github</h5>
                                   </div>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/cp.jpg")}
+                                    src={require('assets/img/cp.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Coding practices</h5>
+                                    <h5 className="title">Coding practices</h5>
                                   </div>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/oop.PNG")}
+                                    src={require('assets/img/oop.PNG')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">OOP concepts</h5>
+                                    <h5 className="title">OOP concepts</h5>
                                   </div>
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                          <Col md="3">
+                            </Col>
+                            <Col md="3">
                               <Card>
                                 <div>
                                   <img
                                     alt="..."
-                                    src={require("assets/img/java.jpg")}
+                                    src={require('assets/img/java.jpg')}
                                   />
                                 </div>
                                 <CardBody>
                                   <div className="author">
-                                      <h5 className="title">Java programming</h5>
+                                    <h5 className="title">Java programming</h5>
                                   </div>
-                                  
                                 </CardBody>
                                 <CardFooter>
-                                <Button
-                                  block
-                                  color="primary"
-                                  onClick={() => this.notify("tc")}
-                                >
-                                  Enroll !
-                                </Button>
+                                  <Button
+                                    block
+                                    color="primary"
+                                    onClick={() => this.notify('tc')}
+                                  >
+                                    Enroll !
+                                  </Button>
                                 </CardFooter>
                               </Card>
-                          </Col>
-                        </Row>
+                            </Col>
+                          </Row>
                         </CardBody>
                       </Card>
                     </Col>
                   </Row>
-                  
                 </CardBody>
                 <CardFooter>
                   <hr />

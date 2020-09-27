@@ -1,4 +1,4 @@
-import Dashboard from 'views/Dashboard.js';
+import Course from 'views/Course.js';
 import StudentRegisteration from 'views/StudentRegisteration.js';
 import Icons from 'views/Icons.js';
 import Typography from 'views/Typography.js';
@@ -6,14 +6,14 @@ import TableList from 'views/Tables.js';
 import Signup from 'views/Signup.js';
 import Login from 'views/Login.js';
 import ProfessorRegisteration from 'views/ProfessorRegisteration.js';
-import UpgradeToPro from 'views/Upgrade.js';
+import Home from 'views/Home.js';
 
 var routes = [
   {
     path: '/home',
     name: 'Home',
     icon: 'nc-icon nc-bank',
-    component: UpgradeToPro,
+    component: Home,
     layout: '/admin',
     hidden: false,
   },
@@ -21,7 +21,7 @@ var routes = [
     path: '/course',
     name: 'Course',
     icon: 'nc-icon nc-pin-3',
-    component: Dashboard,
+    component: Course,
     layout: '/admin',
     hidden: false,
   },

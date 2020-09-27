@@ -1,11 +1,11 @@
 var passport = require('passport');
-var config = require('./config/authentication');
+var config = require('../config/authentication');
 var LocalStrategy = require('passport-local').Strategy;
 var Extractjwt = require('passport-jwt').ExtractJwt;
 var JwtStrategy = require('passport-jwt').Strategy;
 var jwt = require('jsonwebtoken');
 
-var User = require('./models/users');
+var User = require('../models/users');
 
 //use passport-local-mongoose plugin in schema
 passport.use(new LocalStrategy(User.authenticate()));

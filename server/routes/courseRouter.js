@@ -222,7 +222,8 @@ courseRouter
           if (course != null && course.weeks.id(req.params.weekId) != null) {
             if (course.professors[0]._id.equals(req.user.details._id)) {
               if (req.body.video) {
-                //Add video here
+                //Add video
+                course.weeks.id(req.params.weekId).videos.push(req.body.video);
               }
               course.save().then(
                 (course) => {

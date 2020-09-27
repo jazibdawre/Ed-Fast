@@ -5,7 +5,7 @@ const multer = require('multer');
 
 const authenticate = require('../middleware/auth');
 const Courses = require('../models/courses');
-const router = express.Router();
+const uploadRouter = express.Router();
 
 // multer middleware -- (Subject to reloactaion)
 
@@ -39,7 +39,7 @@ const upload = multer({
 }).single('file');
 
 // port which receives the video
-router.post(
+uploadRouter.post(
   '/uploadFile',
   // only admin/proffessor can make videos
   authenticate.verifyAdmin,
@@ -58,7 +58,7 @@ router.post(
 );
 
 // Add Files details to mongoose collection
-router
+uploadRouter
   .post('/video', authenticate.verifyAdmin, (req, res) => {
     Courses.findByIdAndUpdate(
       req.body.courseID,
@@ -73,6 +73,7 @@ router
 
   // details of a particular file
   .get('/video/:id', authenticate.verifyUser, (req, res) => {
+    /*
     Courses.findOne(req.params.courseID)
       .populate('video')
       .exec()
@@ -89,6 +90,48 @@ router
       .catch((err) => {
         res.json({ success: false, error: err });
       });
+      */
+    Courses.findById(req.params.courseId)
+      .then(
+        (course) => {
+          // if course has been found and a weekID ahs been entered
+          if (course != null && course.weeks.id(req.params.weekId) != null) {
+            if (course.professors[0]._id.equals(req.user.details._id)) {
+              if (req.body.video) {
+                res.json({ success: true, video: req.body.video });
+              } else {
+                res.json({ success: false, error: 'Video Not Found' });
+              }
+              course
+                .save()
+                .then(() =>
+                  res.json({
+                    success: true,
+                    msg: 'Video Found',
+                    video: req.body.video,
+                  })
+                )
+                .catch((error) => {
+                  res.json({ success: false, error: error });
+                });
+            } else {
+              err = new Error("Cannot Edit someone Else's week");
+              err.status = 403;
+              return next(err);
+            }
+          } else if (course == null) {
+            err = new Error('Course ' + req.params.courseId + ' NOT found');
+            err.status = 404;
+            return next(err);
+          } else {
+            err = new Error('Week ' + req.params.weekId + ' NOT found');
+            err.status = 404;
+            return next(err);
+          }
+        },
+        (err) => next(err)
+      )
+      .catch((err) => next(err));
   });
 
-module.exports = router;
+module.exports = uploadRouter;
